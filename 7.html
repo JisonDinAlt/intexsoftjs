@@ -1,0 +1,26 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<script>
+function isPointInCircle (x,y) {
+var result;
+var xc = 2, yc = 2, r = 2; // xc yc - координаты центра круга, r - радуис
+	 if (Math.pow(xc-x,2) + Math.pow(yc-y,2) <= r*r) {
+		 result = true;
+	 }
+	 else {
+		 result = false
+	 }
+	console.log(result);
+}
+isPointInCircle(0, 2);
+</script>
+<body>
+
+</body>
+</html>
