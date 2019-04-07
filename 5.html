@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -7,20 +7,19 @@
 	<title>Document</title>
 </head>
 <script>
-function isTimeValid (hour, minute) {
-var result = false;
-
-if (((hour>=0) && (hour<24)) && ((minute>=0)&&(minute<60)))
-
-{
-	result = true;
+function getSumm (number) {
+	var result = function sum(number) {
+	    if (number !== 1) {
+	        return number + sum(--number);
+	    } else {
+	        return number;
+	    }
+	}
+	console.log(result(number));
 }
-return (result);
-}
-isTimeValid(32,43);
+getSumm(7);
 </script>
 <body>
-
 
 </body>
 </html>
