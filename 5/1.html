@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<script>
+function getWords (string) {
+var result;
+
+result = string.split(' ')
+	.filter(function(item, i, arr){
+		return item[0] == '#'
+	})
+	.map(function(item, i, arr){
+		return item.substr(1,item.length)
+	})
+return (result);
+}
+
+function normalizeWords (array) {
+	var result;
+	array = array.map(function(item, i, arr){
+	 		return item.toLowerCase()
+	 	})
+	function unique(arr) {
+  var result = [];
+  	nextInput:
+    for (var i = 0; i < arr.length; i++) {
+      var str = arr[i];
+      for (var j = 0; j < result.length; j++) {
+        if (result[j] == str) continue nextInput;
+      }
+      result.push(str);
+    }
+	return result;
+	}
+result = unique(array);
+  return (result);
+}
+ result3 = [];
+function addressBook (string) {
+
+	input = string.split(' ');
+	currentComand = input[0];
+	currentName = input[1];
+	currentPhone = input[2];
+
+	function show(){
+
+		result3 = result3.sort();
+		for (i = 0; i < result3.length; i++) {
+			var showResult = '', name = '', numbers = '';
+			name = result3[i].split(' ',1);
+			numbers = result3[i].split(' ').filter(function(item, i, arr){if (item != name) {return item} else {resultOfDelete = true} }).join(', ');
+			if (numbers) {
+				console.log(name + ': ' + numbers);
+			}
+		}
+	}
+
+	function add(currentName, currentPhone) {
+		var contactExist = false;
+		currentPhone = currentPhone.split(',').join(' ');
+		for (i = 0; i < result3.length; i++) {
+			if (result3[i].split(' ',1) == currentName) {
+				result3[i] = result3[i] + ' ' +  currentPhone;
+				contactExist = true;
+			}
+		}
+		if (!contactExist) {
+			result3.push(currentName + ' ' + currentPhone)
+		}
+
+	}
+
+	function removePhone(phoneForDelete) {
+			resultOfDelete = false;
+		for (i = 0; i < result3.length; i++) {
+			result3[i] = result3[i].split(' ').filter(function(item, i, arr){if (item != phoneForDelete) {return item} else {resultOfDelete = true} }).join(' ');
+		}
+		return resultOfDelete;
+	}
+
+	switch (currentComand) {
+		case 'ADD':
+					add(currentName, currentPhone);
+			break;
+		case 'REMOVE_PHONE':
+					removePhone(currentName);
+			break;
+		case 'SHOW':
+					show();
+			break;
+	}
+
+}
+
+</script>
+<body>
+
+
+</body>
+</html>
